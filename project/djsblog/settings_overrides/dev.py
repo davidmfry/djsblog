@@ -56,9 +56,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'HOST': 'localhost',
-        'NAME': 'djsblog',
-        'USER': 'gcorradini',
-        'PASSWORD': 'gcorradini',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
         'OPTIONS': {
             #'autocommit': True,
         },
