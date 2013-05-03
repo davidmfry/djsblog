@@ -1,0 +1,38 @@
+{% extends "base_blog.html" %}
+{% block content %}
+{% load comments %}
+{% for post in posts %}
+<div class="post">
+<h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+<h3>{{ post.pub_date }}</h3>
+{{ post.text }}
+<p><i>By {{ post.author.first_name }} {{ post.author.last_name }}</i></p>
+<span>
+<p><b>Categories:</b>
+{% for category in post.categories.all %}
+{% if forloop.last %}
+{{ category.title }} 
+{% else %}
+{{ category.title }},
+{% endif %}
+{% endfor %}</p>
+</span>
+{% get_comment_count for post as comment_count %}
+<h3>Comments: {{ comment_count }}</h3>
+{% get_comment_list for post as comments %}
+<ol>
+{% for comment in comments %}
+<li><span>{{ comment.comment }} -- {{ comment.submit_date }}</span></li>
+{% endfor %}
+</ol>
+{% render_comment_form for post %}
+{% endfor %}
+</div>
+<br />
+{% if page.has_previous %}
+<a href="/{{ page.previous_page_number }}/">Previous Page</a>
+{% endif %}
+{% if page.has_next %}
+<a href="/{{ page.next_page_number }}/">Next Page</a>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+BeautifulSoup==3.2.1
+Django==1.4
+Markdown==2.1.1
+PIL==1.1.7
+South==0.7.4
+importlib==1.0.2
+logutils==0.3.2
+psycopg2==2.4.5
+simplejson==2.5.0
+uuid==1.30
+wsgiref==0.1.2
+django-extensions
+httplib2

@@ -1,0 +1,43 @@
+# EMACS  #
+##########
+*.*~
+
+# OLD SVN DIRS  #
+#################
+*.svn
+
+# COMPILED PYTHON   #
+#####################
+*.pyc
+
+# LOGS   #
+##########
+*.log
+*.accesslog
+*.errorlog
+
+# Root level dirs that can be ignored #
+#######################################
+#localdata
+
+# ignore the following config files #
+# that are dynamically created #
+#######################################
+project/manage.py
+project/fixtures/dev/sites.json
+project/fixtures/stage/sites.json
+project/fixtures/prod/sites.json
+project/conf/base_settings.sh
+project/conf/apache.conf
+project/project/settings.py
+project/project/settings_overrides/dev.py
+project/project/settings_overrides/dev_wsgi.py
+project/project/settings_overrides/stage.py
+project/project/settings_overrides/stage_wsgi.py
+project/project/settings_overrides/prod.py
+project/project/settings_overrides/prod_wsgi.py
+
+
+# Ignore venv installed components
+venv/pyvenv26
+venv/src

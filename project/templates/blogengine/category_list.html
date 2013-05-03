@@ -1,0 +1,6 @@
+{% extends "base_blog.html" %}
+{% block content %}
+{% for category in object_list %}
+    <span><p><b>{{ category.title }}</b>&nbsp;:&nbsp;{{ category.description }}</p></span>
+{% endfor %}
+{% endblock %}
