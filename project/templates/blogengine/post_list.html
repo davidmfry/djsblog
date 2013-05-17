@@ -1,29 +1,247 @@
 {% extends "base_blog.html" %}
+{% block extracss %}
+<style>
+.thetime {
+background: url(/image/clock.png) 0 0px no-repeat;
+padding: 0px 15px 0 20px;
+margin-left:5px;
+}
+
+.theauthor {
+background: url(/image/author.png) 0 0px no-repeat;
+padding: 0px 15px 0 20px;
+margin-left:-10px;
+}
+
+.thecomments {
+background: url(/image/comment_alt2_stroke_14x16.png) 0 0px no-repeat;
+padding: 0px 15px 0 20px;
+margin-left:10px;
+}
+
+.thecategories {
+background: url(/image/Label.png) 0 0px no-repeat;
+padding: 0px 15px 0 20px;
+margin-left:-10px;
+}
+
+
+
+.headline_meta {
+color: #999;
+padding: 1px 0 15px;
+margin: 0 0 5px 0;
+border-bottom: 1px #EEE dashed;
+overflow: hidden;
+font-size:12px;
+}
+
+</style>
+<style>
+.post_wrapper
+{
+text-align: justify;
+height: 270px;
+margin-top:30px;
+margin-left:-10px;
+border: 2px solid #ddd;
+background: #fff;
+border-top: 5px solid #2C2F32;
+-webkit-box-shadow: 0 1px 0 #D2D2D3, 0 1px 3px rgba(0, 0, 0, .2);
+-moz-box-shadow: 0 1px 0 #d2d2d3, 0 1px 3px rgba(0,0,0,.2);
+-o-box-shadow: 0 1px 0 #d2d2d3, 0 1px 3px rgba(0,0,0,.2);
+box-shadow: 0 1px 0 #D2D2D3, 0 1px 3px rgba(0, 0, 0, .2);
+}
+.post_wrapper2
+{
+width:580px;
+margin: 15px;
+}
+.readmore {
+    background: none repeat scroll 0 0 #1BC4DE;
+    color: white;
+    float: left;
+    font-family: 'Patua One';
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 10px 12px 10px 15px;
+    text-transform: uppercase;
+}
+.widget-content {
+    -moz-border-image: url("/image/ada1.png") 30 30 30 30 round;
+    border-bottom: 30px solid #2C2F32;
+    margin-left: -12px;
+    padding: 10px;
+    width: 295px;
+}
+.profile-img {
+    margin-bottom: 5px;
+    margin-top: 0;
+    padding: 4px;
+}
+.profile-img {
+    float: left;
+    margin: 0 5px 5px;
+}
+.profile-name-link {
+    background: none no-repeat scroll left top transparent;
+    display: inline-block;
+    min-height: 20px;
+    padding-left: 20px;
+}
+.profile-datablock {
+    margin: 0.5em 0;
+}
+.profile-data {
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    line-height: 1.6em;
+    margin: 0;
+    text-transform: uppercase;
+}
+.profile-textblock {
+    line-height: 1.6em;
+    margin: 0.5em 0;
+}
+</style>
+{% endblock %}
+
 {% block content %}
 {% load comments %}
+<div id='wrap1'>
+<div id='header-wrapper'>
+<div class='headerleft'>
+<div class='headerleft section' id='headerleft'><div class='widget Header' id='Header1'>
+<div id='header-inner'>
+<div class='titlewrapper'>
+<h1 class='title'>
+<a href='index.html'>My Django Blog</a>
+</h1>
+</div>
+<div class='descriptionwrapper'>
+<p class='description'><span>
+</span></p>
+</div>
+</div>
+</div></div>
+</div>
+<div class='headerright'>
+<div class='headerright section' id='headerright'><div class='widget Image' id='Image1'>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+</span>
+</span>
+<div class='clear'></div>
+</div></div>
+</div>
+</div>
+<div style='clear:both;'></div>
+<div id='crosscol-wrapper' style='text-align:center'>
+<div class='crosscol section' id='crosscol'></div>
+</div>
+
+<div id='main-wrapper'>
+<div class='main section' id='main'>
+<div class='widget Blog' id='Blog1'>
+<div class='blog-posts hfeed'>
 {% if object_list %}
 {% for post in object_list %}
-	<div class="post">
-	<h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
-	{% if post.text|length > 50 %}
-	{{ post.text|slice:"50" }}...
+	<div class="date-outer">
+	<div class="date-posts">
+	<div class="post_wrapper">
+	<div class="post_wrapper2">
+
+	<h2 class='post-title entry-title'>
+	<a href='{{ post.get_absolute_url }}'>{{ post.title }}</a>
+	</h2>
+
+	<div class='headline_meta'>
+	<span class='thetime'>{{ post.pub_date }}</span>
+	<span class='theauthor'>By<a href='/' rel='author'>
+	{{ post.author.first_name }}, {{ post.author.last_name }}</a>
+	</span>
+	<span class='thecategories'>
+		{% for category in post.categories.all %}
+		{% if forloop.last %}
+		{{ category.title }}
+		{% else %}
+		{{ category.title }},
+		{% endif %}
+		{% endfor %}
+	{% get_comment_count for post as comment_count %}
+	<span class='thecomments'><a href='/' onclick=''>{{ comment_count }} comments</a></span>
+	</span>
+	</div>
+	<p>
+	{% if post.text|length > 150 %}
+	{{ post.text|slice:"150" }}...
 	{% else %}
 	{{ post.text }}
 	{% endif %}
-	{% get_comment_count for post as comment_count %}
-	<p><b>Comments: {{ comment_count }}</b></p>
+	</p>
+	<div class='readmore'>
+	<a href='{{ post.get_absolute_url }}'>Read more &#8594;</a>
 	</div>
+	<div style='clear: both;'></div>
+	<div class='post-footer'>
+	<div class='post-footer-line post-footer-line-'></div>
+	<div class='post-footer-line post-footer-line-2'></div>
+	<div class='post-footer-line post-footer-line-3'>
+	<span class='item-control blog-admin pid-162223052'></span>
+	</div>
+	</div> <!-- post-footer -->
+	</div> <!-- post-wrapper2 -->
+	</div> <!-- post-wrapper -->
+	</div> <!-- date-posts -->
+	</div> <!-- date-outer -->
 {% endfor %}
-<br />
+</div> <!-- blog-posts hfeed -->
+</div> 
+</div> 
+</div> <!-- main-wrapper -->
+
+<div id="rsidebar-wrapper">
+<div class="post_wrapper4">
+<div id="sidebartab1" class="sidebar section">
+<div id="Profile1" class="widget Profile">
+<h2>About Me</h2>
+<div class="widget-content">
+<a href="https://plus.google.com/109149951835669943344">
+<img class="profile-img" width="80" height="80" src="/image/froto.jpg" alt="My Photo">
+</a>
+<dl class="profile-datablock">
+<dt class="profile-data">
+<a class="profile-name-link g-profile"  style="background-image: url(/image/gprofile_button-16.png);" rel="author" href="https://plus.google.com/" data-gapiscan="true" data-onload="true" data-gapiattached="true">Authoria Writerly</a>
+</dt>
+<dd class="profile-textblock">Lok Sabha MP Naveen Jindal has complained of several fake profiles and communities containing objectionable content being created on Facebook in his name. Blah blah blah blah blah blah blah.</dd>
+</dl>
+<a class="profile-link" rel="author" href="/">View my complete profile</a>
+<div class="clear">&nbsp;</div>
+<span class="widget-item-control">
+<div class="clear"></div>
+</div>
+</div> <!-- widget Profile -->
+
+<div id="pagination" class="widget Pagination">
+<h2>Older Posts</h2>
+<div class="widget-content">
 {% if page_obj.has_previous %}
 	<a href="/{{ page_obj.previous_page_number }}/">Previous Page</a>
 {% endif %}
 {% if page_obj.has_next %}
 	<a href="/{{ page_obj.next_page_number }}/">Next Page</a>
 {% endif %}
-{% else %}
-	<div class="post">
-	<p>No posts matched</p>
-	</div>
+</div> <!-- widget-content -->
+<div class="clear"></div>
+</div> <!-- widget Profile -->
+
+</div> <!-- sidebar section-->
+</div> <!-- post_wrapper4 -->
+</div> <!-- rsidebar-wrapper -->
+
+</div> <!-- wrap1 -->
+<br/>
+<div style='clear:both;'>&#160;</div>
 {% endif %}
 {% endblock %}

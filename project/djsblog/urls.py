@@ -27,7 +27,7 @@ urlpatterns = patterns('',
     #
     # Home page
     #
-    url(r'^(?P<page>\d+)?/?$', ListView.as_view( model=Post, paginate_by=3, ) ),
+    url(r'^(?P<page>\d+)?/?$', ListView.as_view( model=Post, paginate_by=5, ) ),
 
     #
     # Blog Posts Detail

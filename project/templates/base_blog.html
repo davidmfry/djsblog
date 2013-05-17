@@ -3,13 +3,17 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>My Django Blog</title>
+{% block extracss %}
+{% endblock %}
 {% block pagejs %}
 {% endblock %}
-<link type="text/css" href="/css/style.css" rel="stylesheet">
+<link type="text/css" href="/css/site.css" rel="stylesheet">
 </head>
 <body>
 {% include "header.html" %}
+<div id="wrapper">
 {% block content %}
+</div> <!-- end wrapper -->
 {% endblock %}
 {% include "footer.html" %}
 </body>
