@@ -23,7 +23,7 @@ Django-Seattle Workshop
 
 ### Lecture
 
-1. [Response Request Cycle][]
+1. [Response Request Cycle](#rrc)
 
 2. The `urls.py` and View Relationship
   * Describe `urls.py`
@@ -38,4 +38,4 @@ Django-Seattle Workshop
 
 ### Exercises
 
-### Response Request Cycle ###
+### <a id="rrc"></a>Response Request Cycle ###
