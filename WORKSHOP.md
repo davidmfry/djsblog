@@ -23,7 +23,7 @@ Django-Seattle Workshop
 
 ### Lecture
 
-1. [Response Request Cycle]
+1. [Response Request Cycle][]
 
 2. The `urls.py` and View Relationship
   * Describe `urls.py`
