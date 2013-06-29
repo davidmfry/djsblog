@@ -115,7 +115,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 AUTHENTICATION_BACKENDS = ( 
-    ( 'profiles.functions.EmailAuthBackend',
+    ( 
       'django.contrib.auth.backends.ModelBackend', )
 )
 

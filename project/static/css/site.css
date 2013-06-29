@@ -68,7 +68,7 @@ padding: 0px;
 h2{}
 /* Posts-----------------------------------------------*/
 h2.date-header{margin:1.5em 0 .5em;display:none;}
-.post{margin-bottom:15px; margin-left:10px;}
+.post{ margin-top:30px; margin-bottom:15px; margin-left:10px;}
 .post-title{color:#333333;margin:0 0 10px 0;padding:0;font-family:Arial,Helvetica,Sans-serif;font-size:24px;line-height:24px;font-weight:bold;}
 .post-title a,.post-title a:visited,.post-title strong{display:block;text-decoration:none;color:#333333;text-decoration:none;}
 .post-title strong,.post-title a:hover{color:#00ccff;text-decoration:none;}

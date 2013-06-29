@@ -50,15 +50,15 @@ DATABASES = {
 '''
 
 #
-#  postgis
+#  postgres
 #
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'HOST': 'localhost',
-        'NAME': 'djsblog',
-        'USER': 'gcorradini',
-        'PASSWORD': 'gcorradini',
+        'NAME': 'djsblog_maria',
+        'USER': 'maria',
+        'PASSWORD': 'maria',
         'OPTIONS': {
             #'autocommit': True,
         },

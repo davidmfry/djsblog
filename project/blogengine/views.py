@@ -6,6 +6,9 @@ from blogengine.models import Post, Category
 from django.contrib.syndication.views import Feed
 from django.contrib.flatpages.models import FlatPage
 
+def about( request ):
+    return render_to_response('about.html', {}, context_instance=RequestContext(request))
+
 def getPost(request, postSlug):
     # Get specified post
     post = Post.objects.filter(slug=postSlug)
