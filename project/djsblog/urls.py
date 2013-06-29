@@ -30,6 +30,11 @@ urlpatterns = patterns('',
     url(r'^(?P<page>\d+)?/?$', ListView.as_view( model=Post, paginate_by=5, ) ),
 
     #
+    # About page
+    #
+    url(r'^about/?$', 'blogengine.views.about' ),
+
+    #
     # Blog Posts Detail
     #
     url(r'^\d{4}/\d{1,2}/(?P<postSlug>[-a-zA-Z0-9]+)/?$', 'blogengine.views.getPost'),

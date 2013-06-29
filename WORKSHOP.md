@@ -1,2 +1,0 @@
-Django-Seattle Workshop
-==========================
