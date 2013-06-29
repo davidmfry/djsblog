@@ -23,7 +23,6 @@
 # ignore the following config files #
 # that are dynamically created #
 #######################################
-project/manage.py
 project/fixtures/dev/sites.json
 project/fixtures/stage/sites.json
 project/fixtures/prod/sites.json
