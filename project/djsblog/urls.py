@@ -17,7 +17,36 @@ from blogengine.views import PostsFeed
 from django.views.generic import ListView
 from blogengine.models import Category, Post
 
+#
+#
+#  we use this for local development only 
+#  to serve static files
+#
+#
+def static(request, template_name):
+
+    if not 'html' in template_name:
+        template_name += '.html'
+
+    return render_to_response( template_name, { 
+        'page_name': "Static Page",
+        'site': Site.objects.get_current(),
+        'user': request.user
+    })
+
+
+
 urlpatterns = patterns('',
+
+    #
+    #  this block of URLS only covers serving local static media
+    #
+    url( r'^css/(?P<path>.*)$',  'django.views.static.serve', { 'document_root': '%s/css' % path.join( settings.ABSOLUTE_PATH, 'static').replace('\\','/') } ),
+    url( r'^font/(?P<path>.*)$', 'django.views.static.serve', { 'document_root': '%s/font'% path.join( settings.ABSOLUTE_PATH, 'static').replace('\\','/') } ),
+    url( r'^img/(?P<path>.*)$',  'django.views.static.serve', { 'document_root': '%s/img' % path.join( settings.ABSOLUTE_PATH, 'static').replace('\\','/') } ),
+    url( r'^image/(?P<path>.*)$',  'django.views.static.serve', { 'document_root': '%s/img' % path.join( settings.ABSOLUTE_PATH, 'static').replace('\\','/') } ),
+    url( r'^js/(?P<path>.*)$',   'django.views.static.serve', { 'document_root': '%s/js' % path.join( settings.ABSOLUTE_PATH, 'static').replace('\\','/') } ),
+
 
     #
     # Uncomment the next line to enable the admin:

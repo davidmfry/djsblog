@@ -38,5 +38,5 @@ project/project/settings_overrides/prod_wsgi.py
 
 
 # Ignore venv installed components
-venv/pyvenv26
+venv/pyvenv
 venv/src
