@@ -56,9 +56,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'HOST': 'localhost',
-        'NAME': 'djsblog_maria',
-        'USER': 'maria',
-        'PASSWORD': 'maria',
+        'NAME': 'djsblog',
+        'USER': 'gcorradini',
+        'PASSWORD': 'gcorradini',
         'OPTIONS': {
             #'autocommit': True,
         },
